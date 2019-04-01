@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'archive',
@@ -10,13 +10,17 @@ export class ArchiveComponent implements OnInit {
   title = "Archive Page"
   year: number;
   month: number;
-  constructor(private route: ActivatedRoute) { }
+  constructor(private router : Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     let params = this.route.snapshot.paramMap;
     this.year = +params.get('year');
     this.month = +params.get('month');
 
+  }
+
+  viewAll() {
+    this.router.navigate(['/']);
   }
 
 }
